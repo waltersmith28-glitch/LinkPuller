@@ -19,9 +19,9 @@ public class HtmlRead {
             );
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.contains("https")) {
+                if (line.contains("href=")) {
                     //System.out.println(line);
-                    int start = line.indexOf("https");
+                    int start = line.indexOf("href=")+6;
 
                     int end = line.indexOf('"', start);
                     if (end < 0) {
