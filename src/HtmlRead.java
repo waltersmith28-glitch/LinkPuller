@@ -10,7 +10,7 @@ public class HtmlRead {
 
         try {
             System.out.println();
-            URL fred = new URL("https://www.espn.com/fantasy/");
+            URL fred = new URL("https://en.wikipedia.org/wiki/LeBron_James");
             URLConnection urlc = fred.openConnection();
             urlc.setRequestProperty("User-Agent", "Mozilla 5.0 (Windows; U; " + "Windows NT 5.1; en-US; rv:1.8.0.11) ");
 
@@ -21,6 +21,7 @@ public class HtmlRead {
             while ((line = reader.readLine()) != null) {
                 int startFrom = 0;
                 while (true) {
+                    //System.out.println(line);
                     int hrefIndex = line.indexOf("href=", startFrom);
                     if (hrefIndex < 0 || hrefIndex + 5 >= line.length()) {
                         break;
@@ -37,6 +38,7 @@ public class HtmlRead {
                     if (end < 0) {
                         break;
                     }
+                    //System.out.println(line);
 
                     String link = line.substring(start, end);
                     link = link.replace("&amp;", "&");
@@ -58,15 +60,6 @@ public class HtmlRead {
             reader.close();
         } catch (Exception ex) {
             System.out.println(ex);
-            //URLConnection urlc = fred.openConnection();
-            // urlc.setRequestProperty("User-Agent", "Mozilla 5.0 (Windows; U; " + "Windows NT 5.1; en-US; rv:1.8.0.11) ");
-            //BufferedReader reader = new BufferedReader(
-            // new InputStreamReader(urlc.getInputStream()));
-            //String line;
-            //while ((line = reader.readLine()) != null) {
-            // if (line.contains("milton")) {
-            //System.out.println("where = " + line.indexOf(".edu"));
-            //System.out.println(line);
         }
     }
 }
