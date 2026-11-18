@@ -10,8 +10,8 @@ public class HtmlRead {
 
         try {
             System.out.println();
-            URL fred = new URL("https://en.wikipedia.org/wiki/LeBron_James");
-            URLConnection urlc = fred.openConnection();
+            URL url = new URL("https://en.wikipedia.org/wiki/LeBron_James");
+            URLConnection urlc = url.openConnection();
             urlc.setRequestProperty("User-Agent", "Mozilla 5.0 (Windows; U; " + "Windows NT 5.1; en-US; rv:1.8.0.11) ");
 
             BufferedReader reader = new BufferedReader(
@@ -46,7 +46,7 @@ public class HtmlRead {
                     if (link.startsWith("//")) {
                         link = "https:" + link;
                     } else if (link.startsWith("/")) {
-                        link = "https://" + fred.getHost() + link;
+                        link = "https://" + url.getHost() + link;
                     }
 
                     if (link.startsWith("http")) {
