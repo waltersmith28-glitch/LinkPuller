@@ -1,5 +1,6 @@
 import java.net.*;
 import java.io.*;
+import java.util.Scanner; //nik helped me with this
 
 public class HtmlRead {
     public static void main(String[] args) {
@@ -7,9 +8,10 @@ public class HtmlRead {
     }
 
     public HtmlRead() {
-
         try {
             System.out.println();
+            System.out.println("What link would you like to pull links from?");
+
             URL url = new URL("https://en.wikipedia.org/wiki/LeBron_James"); //tells the program which website to pull links from.
             URLConnection urlc = url.openConnection();
             urlc.setRequestProperty("User-Agent", "Mozilla 5.0 (Windows; U; " + "Windows NT 5.1; en-US; rv:1.8.0.11) ");
