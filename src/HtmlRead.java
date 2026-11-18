@@ -10,7 +10,7 @@ public class HtmlRead {
 
         try {
             System.out.println();
-            URL url = new URL("https://en.wikipedia.org/wiki/LeBron_James");
+            URL url = new URL("https://en.wikipedia.org/wiki/LeBron_James"); //tells the program which website to pull links from.
             URLConnection urlc = url.openConnection();
             urlc.setRequestProperty("User-Agent", "Mozilla 5.0 (Windows; U; " + "Windows NT 5.1; en-US; rv:1.8.0.11) ");
 
@@ -22,14 +22,14 @@ public class HtmlRead {
                 int startFrom = 0;
                 while (true) {
                     //System.out.println(line);
-                    int hrefIndex = line.indexOf("href=", startFrom);
+                    int hrefIndex = line.indexOf("href=", startFrom);//tells the code where the links are and where to start printing them.
                     if (hrefIndex < 0 || hrefIndex + 5 >= line.length()) {
                         break;
                     }
 
                     char quote = line.charAt(hrefIndex + 5);
                     if (quote != '"' && quote != '\'') {
-                        startFrom = hrefIndex + 5;
+                        startFrom = hrefIndex + 5;//avoids putting "href=" in the printed links
                         continue;
                     }
 
@@ -59,7 +59,7 @@ public class HtmlRead {
             }
             reader.close();
         } catch (Exception ex) {
-            System.out.println(ex);
+            System.out.println(ex);//prints links in output box
         }
     }
 }
