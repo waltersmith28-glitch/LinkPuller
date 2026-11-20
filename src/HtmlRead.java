@@ -2,14 +2,14 @@ import java.net.*;
 import java.io.*;
 import java.util.Scanner; //nik helped me with this
 
-public class HtmlRead {//Creates an HtmlRead object, which runs the constructor below
+public class HtmlRead {
     public static void main(String[] args) {
         HtmlRead app = new HtmlRead();
     }
-
+    //Creates an HtmlRead object, which runs the constructor below
     public HtmlRead() {
         try {
-            Scanner scanner = new Scanner(System.in);//creates a Scanner that reads from System.in, which is the keyboard/chatbox
+            Scanner scanner = new Scanner(System.in);//creates a Scanner that reads from System.in, which is the keyboard/console
 
             System.out.println();
             System.out.println("What link would you like to pull links from?");//asks the user to type and press Enter.
@@ -22,9 +22,9 @@ public class HtmlRead {//Creates an HtmlRead object, which runs the constructor 
             scanner.close();//closes the scanner
 
             URL url = new URL(website); //tells the program which website to pull links from.
-            URLConnection urlc = url.openConnection(); //Adds a "User-Agent" header that makes the request look like it came from a web browser
+            URLConnection urlc = url.openConnection();
             urlc.setRequestProperty("User-Agent", "Mozilla 5.0 (Windows; U; " + "Windows NT 5.1; en-US; rv:1.8.0.11) ");
-
+//Adds a "User-Agent" header that makes the request look like it came from a web browser
             BufferedReader reader = new BufferedReader(
                     new InputStreamReader(urlc.getInputStream())
             );
@@ -44,7 +44,7 @@ public class HtmlRead {//Creates an HtmlRead object, which runs the constructor 
                     char quote = line.charAt(hrefIndex + 5);//skips lines that do not contain a quote after "href="
                     //because those are not links
                     if (quote != '"' && quote != '\'') {
-                        startFrom = hrefIndex + 5;//avoids putting "href=" in the printed links
+                        startFrom = hrefIndex + 5;//avoids the loop finding the same link forever
                         continue;
                     }
 
@@ -74,7 +74,7 @@ public class HtmlRead {//Creates an HtmlRead object, which runs the constructor 
             }
             reader.close();//closes connection to website
         } catch (Exception ex) {
-            System.out.println(ex);//prints links in output box
+            System.out.println(ex);
         }
     }
 }
